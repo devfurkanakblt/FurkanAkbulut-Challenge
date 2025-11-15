@@ -14,6 +14,13 @@ export const createHero = (
     // Hints:
     // Use tx.pure.string() for string arguments
     // Use tx.pure.u64() for number arguments (convert power to BigInt)
-
+  tx.moveCall({
+    target: `${packageId}::hero::create_hero`,
+    arguments: [
+      tx.pure.string(name),
+      tx.pure.string(imageUrl),
+      tx.pure.u64(BigInt(power)),
+    ],
+  });
   return tx;
 };
